@@ -1,0 +1,118 @@
+/* =========================================================
+   MOTION TOKENS — Design System Foundation
+   Version: 1.3 (with Debug Duration)
+========================================================= */
+
+/* ---------- 1.1 Duration (Primitive) ---------- */
+:root {
+  --motion-dur-xs: 120ms;   /* microfeedback (hover, icon blink) */
+  --motion-dur-s: 180ms;    /* small state changes (press, tooltip) */
+  --motion-dur-m: 240ms;    /* element in/out (accordion, dropdown) */
+  --motion-dur-l: 320ms;    /* overlays (modal, drawer) */
+  --motion-dur-xl: 420ms;   /* route/view transitions */
+  --motion-dur-loop-skeleton: 1200ms; /* shimmer loop */
+
+  /* 🧩 Debug duration — for visual motion inspection */
+  --motion-dur-debug: 3000ms;
+}
+
+/* ---------- 1.2 Duration (Component / Extended) ---------- */
+:root {
+  --motion-dur-spinner: 1000ms;
+  --motion-dur-checkmark-circle: 600ms;
+  --motion-dur-checkmark-tick: 400ms;
+  --motion-dur-checkmark-delay: 300ms;
+  --motion-dur-reset-delay: 1200ms;
+}
+
+/* ---------- 1.3 Easing (Primitive) ----------
+   Easing functions define the "feel" of motion.
+   They determine how fast or slow an animation accelerates or decelerates.
+   Choose curves based on the intention of the motion:
+   - linear → constant speed
+   - ease-in → starts slow, ends fast
+   - ease-out → starts fast, ends slow
+   - ease-in-out → both start and end smoothly
+   - custom curves → add character and brand feel
+------------------------------------------------ */
+:root {
+  /* ⚙️ Linear — constant speed
+     Use for continuous, mechanical motion (e.g. rotating spinner loops)
+     No acceleration or deceleration. */
+  --motion-ease-linear: linear;
+
+  /* 🚀 Ease-in — starts slowly, ends quickly
+     Feels like acceleration.
+     Good for entering elements that need energy or momentum (e.g. scale-in, toggle-on). */
+  --motion-ease-in: cubic-bezier(0.42, 0, 1, 1);
+
+  /* 🧊 Ease-out — starts fast, ends slowly
+     Feels like deceleration.
+     Ideal for exiting motion or elements that settle gently into place. */
+  --motion-ease-out: cubic-bezier(0, 0, 0.58, 1);
+
+  /* 🔁 Ease-in-out — starts and ends smoothly
+     Balanced motion.
+     Great for subtle transitions or two-way movements (e.g. overlays, modals). */
+  --motion-ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+
+  /* 🌊 Smooth — a slightly slower, natural ease-out
+     Gives a gentle, organic feel.
+     Default curve for most UI animations (e.g. fade, enter, toggle). */
+  --motion-ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ⚡ Snap — fast acceleration with quick stop
+     Adds liveliness and confidence to quick feedback (e.g. button press, micro-interaction). */
+  --motion-ease-snap: cubic-bezier(0.33, 1, 0.68, 1);
+
+/* 🌪️ Spinner Ease — very subtle ease-in / ease-out, nearly linear
+   Smooth acceleration and deceleration per rotation, not obvious. */
+   --motion-ease-spinner: cubic-bezier(0.36, 0.33, 0.64, 0.67);
+}
+
+/* ---------- 1.4 Delay (Primitive) ----------
+   Delay tokens define how long motion waits before starting.
+   Use T-shirt sizing for consistent, predictable sequencing across components.
+   Example usage:
+     transition-delay: var(--motion-delay-s);
+------------------------------------------------ */
+:root {
+  --motion-delay-xs: 40ms;   /* Micro delay — subtle micro-feedback (hover, focus) */
+  --motion-delay-s: 120ms;   /* Small delay — light staggering between elements */
+  --motion-delay-m: 240ms;   /* Medium delay — for sequenced UI transitions */
+  --motion-delay-l: 400ms;   /* Large delay — for major view or route changes */
+  --motion-delay-xl: 600ms;  /* Extra-large delay — cinematic or orchestrated sequences */
+}
+
+/* ---------- 1.5 Semantic Motion Patterns ---------- */
+:root {
+  --motion-pattern-fade: var(--motion-dur-s) var(--motion-ease-out);
+  --motion-pattern-scale: var(--motion-dur-xs) var(--motion-ease-smooth);
+  --motion-pattern-enter: var(--motion-dur-m) var(--motion-ease-out);
+  --motion-pattern-exit: var(--motion-dur-m) var(--motion-ease-in);
+  --motion-pattern-overlay: var(--motion-dur-l) var(--motion-ease-in-out);
+  --motion-pattern-toast: var(--motion-dur-l) var(--motion-ease-smooth);
+  --motion-pattern-toggle-in: var(--motion-dur-m) var(--motion-ease-smooth);
+  --motion-pattern-toggle-out: var(--motion-dur-s) var(--motion-ease-smooth);
+  --motion-pattern-spinner: var(--motion-dur-spinner) var(--motion-ease-spinner);
+}
+
+/* ---------- 1.6 Debug Mode ---------- */
+/*
+   Use this section to temporarily override motion tokens for debugging.
+   Apply the .motion-debug class to <html>, <body>, or any container.
+   Example:
+     <body class="motion-debug"> … </body>
+*/
+.motion-debug {
+  --motion-dur-m: var(--motion-dur-debug);
+  --motion-dur-s: var(--motion-dur-debug);
+  --motion-dur-xs: var(--motion-dur-debug);
+}
+
+/* ---------- 1.7 Notes ---------- */
+/*
+  - Add "motion-debug" class to enable 3s transitions.
+  - Helps visualize easing, sequencing, and timing offsets.
+  - Remove or disable before production.
+*/

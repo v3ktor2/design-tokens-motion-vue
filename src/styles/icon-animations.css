@@ -1,0 +1,47 @@
+@import "./motion.css";
+
+/* =========================================================
+   SEMANTIC MOTION UTILITIES
+   These classes safely map motion tokens to usable CSS
+   without relying on CSS variable inheritance in keyframes.
+========================================================= */
+
+/* Spinner rotation pattern */
+.motion-spinner {
+  animation-duration: 1000ms; /* from var(--motion-dur-spinner) */
+  animation-timing-function: linear; /* from var(--motion-ease-linear) */
+}
+
+/* Checkmark circle pattern */
+.motion-checkmark-circle {
+  animation-duration: 600ms; /* from var(--motion-dur-checkmark-circle) */
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Checkmark tick pattern */
+.motion-checkmark-tick {
+  animation-duration: 400ms; /* from var(--motion-dur-checkmark-tick) */
+  animation-delay: 300ms; /* from var(--motion-dur-checkmark-delay) */
+  animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* =========================================================
+   Keyframes (referenced by icons)
+========================================================= */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawTick {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
