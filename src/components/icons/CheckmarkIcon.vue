@@ -25,7 +25,7 @@
   fill: none;
 }
 
-/* Start hidden */
+/* Start hiden */
 .circle {
   opacity: 0;
   transform: scale(0.9);
