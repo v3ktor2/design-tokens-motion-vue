@@ -35,7 +35,7 @@ function toggle() {
       fill="none"
       aria-hidden="true"
     >
-      <!-- Outer ring -->
+      <!-- Outer circle -->
       <rect
         x="0.625"
         y="0.625"
