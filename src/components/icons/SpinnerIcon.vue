@@ -24,7 +24,7 @@
   stroke-dasharray: 80;
   stroke-dashoffset: 60;
   transform-origin: center;
-  animation: spin var(--motion-dur-spinner) linear infinite;
+  animation: spin var(--motion-dur-spinner) var(--motion-ease-spinner) infinite;
 }
 
 @keyframes spin {
