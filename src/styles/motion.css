@@ -70,6 +70,21 @@
    --motion-ease-spinner: cubic-bezier(0.36, 0.33, 0.64, 0.67);
 }
 
+/* ---------- 1.3 Scale (Primitive) ----------
+   Scale tokens define transform values for consistent sizing effects.
+   Use these for interactive feedback, state changes, and emphasis.
+------------------------------------------------ */
+:root {
+  /* 🔽 Scale down values — for press/active states */
+  --motion-scale-press: 0.95;     /* Standard button/element press feedback */
+  --motion-scale-press-soft: 0.98; /* Subtle press for large elements */
+  --motion-scale-press-heavy: 0.92; /* Strong press for micro-interactions */
+  
+  /* 📐 Utility scales — for enter/exit animations */
+  --motion-scale-hidden: 0.5;     /* Hidden/collapsed state */
+  --motion-scale-visible: 1;      /* Normal/visible state */
+}
+
 /* ---------- 1.4 Delay (Primitive) ----------
    Delay tokens define how long motion waits before starting.
    Use T-shirt sizing for consistent, predictable sequencing across components.

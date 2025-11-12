@@ -55,7 +55,7 @@ function handleClick() {
   transition: transform var(--motion-pattern-scale);
 }
 .buy-btn:active {
-  transform: scale(0.95);
+  transform: scale(var(--motion-scale-press));
 }
 
 /* Hide text when loading or success */

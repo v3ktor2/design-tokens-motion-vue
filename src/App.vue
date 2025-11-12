@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import BuyButton from "./components/BuyButton.vue";
 import RadioButton from "./components/RadioButton.vue";
+import IconCart from "./components/IconCart.vue";
 
 const selected = ref("a");
 </script>
@@ -9,6 +10,11 @@ const selected = ref("a");
 <template>
   <main class="app-container">
     <h1>Motion Tokens Demo</h1>
+
+    <section class="component-section">
+      <h2>Icon Cart</h2>
+      <IconCart />
+    </section>
 
     <section class="component-section">
       <h2>Buy Button</h2>

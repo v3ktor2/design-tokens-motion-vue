@@ -76,7 +76,7 @@ function toggle() {
   padding: 0.25rem;
   transition: transform var(--motion-pattern-scale);
 }
-.radio-btn:active { transform: scale(0.95); }
+.radio-btn:active { transform: scale(var(--motion-scale-press)); }
 
 .label {
   font-size: 14px;
