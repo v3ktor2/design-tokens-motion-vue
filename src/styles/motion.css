@@ -18,7 +18,7 @@
 
 /* ---------- 1.2 Duration (Component / Extended) ---------- */
 :root {
-  --motion-dur-spinner: 750ms;
+  --motion-dur-spinner: 75ms;
   --motion-dur-checkmark-circle: 600ms;
   --motion-dur-checkmark-tick: 400ms;
   --motion-dur-checkmark-delay: 300ms;
