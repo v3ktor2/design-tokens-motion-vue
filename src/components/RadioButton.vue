@@ -42,8 +42,8 @@ function toggle() {
         width="22.75"
         height="22.75"
         rx="11.375"
-        fill="var(--UI-Background-color-background, #FFF)"
-        stroke="var(--Colors-Sand-900, #353028)"
+        fill="var(--palette-sand-50)"
+        stroke="var(--palette-sand-900)"
         stroke-width="1.25"
       />
 
@@ -53,7 +53,7 @@ function toggle() {
         cx="12"
         cy="12"
         r="8"
-        fill="var(--Colors-Sand-900, #353028)"
+        fill="var(--palette-sand-900)"
         :class="{ active: isActive, inactive: !isActive }"
       />
     </svg>
@@ -80,7 +80,7 @@ function toggle() {
 
 .label {
   font-size: 14px;
-  color: var(--Colors-Sand-900, #353028);
+  color: var(--palette-sand-900);
 }
 
 /* ---------- Animation ---------- */

@@ -20,15 +20,9 @@ function handleClick() {
 </script>
 
 <template>
-  <button class="buy-btn" :class="state" @click="handleClick">
-    <!-- Label -->
-    <span class="label" v-if="state === 'idle'">Buy Now</span>
-
-    <!-- Spinner -->
-    <SpinnerIcon v-if="state === 'loading'" />
-
-    <!-- Checkmark -->
-    <CheckmarkIcon v-if="state === 'success'" />
+  <button class="buy-button">
+    <CartIcon class="cart-icon" />
+    <span class="label">Add to Cart</span>
   </button>
 </template>
 
@@ -81,5 +75,28 @@ function handleClick() {
   opacity: 1;
   stroke-dashoffset: 0;
   transition-delay: var(--motion-delay-m);
+}
+
+.buy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--palette-sand-50);
+  background-color: var(--palette-red-500);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform var(--motion-pattern-scale);
+}
+
+.buy-button:hover {
+  background-color: var(--palette-sand-900);
+}
+
+.buy-button:active {
+  transform: scale(var(--motion-scale-press));
 }
 </style>

@@ -5,5 +5,5 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   // optional: helps GitHub Pages know where your app lives
-  base: './',
+base: '/design-tokens-motion-vue/',
 })

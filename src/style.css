@@ -1,4 +1,11 @@
 :root {
+  /* Your color palette */
+  --palette-red-500: #DC2638;
+  --palette-sand-50: #FCFAF7;
+  --palette-sand-100: #F4EEE7;
+  --palette-sand-500: #625745;
+  --palette-sand-900: #353028;
+  
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

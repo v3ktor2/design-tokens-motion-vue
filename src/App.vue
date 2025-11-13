@@ -50,7 +50,8 @@ const selected = ref("a");
   padding: 3rem 1rem;
   gap: 2.5rem;
   font-family: system-ui, sans-serif;
-  color: #353028;
+  color: var(--palette-sand-900);
+  background-color: var(--palette-sand-50);
 }
 
 .component-section {
@@ -67,6 +68,6 @@ const selected = ref("a");
 
 .note {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--palette-sand-500);
 }
 </style>
