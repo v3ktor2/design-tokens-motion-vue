@@ -1,12 +1,20 @@
 <script setup>
+import { ref } from 'vue';
 import CartIcon from "./icons/CartIcon.vue";
 import StyledBadge from "./StyledBadge.vue";
+
+const cartCount = ref(1);
+
+// Example: increment count on click to demonstrate animation
+function handleClick() {
+  cartCount.value++;
+}
 </script>
 
 <template>
-  <button class="icon-cart">
+  <button class="icon-cart" @click="handleClick">
     <CartIcon />
-    <StyledBadge class="badge" />
+    <StyledBadge :count="cartCount" class="badge" />
   </button>
 </template>
 
