@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import SpinnerIcon from "./icons/SpinnerIcon.vue";
 import CheckmarkIcon from "./icons/CheckmarkIcon.vue";
+import CartIcon from "./icons/CartIcon.vue";
 
 const state = ref("idle"); // idle → loading → success
 
@@ -20,9 +21,10 @@ function handleClick() {
 </script>
 
 <template>
-  <button class="buy-button">
-    <CartIcon class="cart-icon" />
+  <button class="buy-btn" :class="state" @click="handleClick">
     <span class="label">Add to Cart</span>
+    <SpinnerIcon v-if="state === 'loading'" class="spinner" />
+    <CheckmarkIcon v-if="state === 'success'" class="checkmark" />
   </button>
 </template>
 
@@ -33,11 +35,11 @@ function handleClick() {
 .buy-btn {
   position: relative;
   height: 56px;
-  min-width: 160px; /* prevent width shift */
+  min-width: 160px;
   border: none;
   border-radius: 32px;
-  background: #dc2638;
-  color: #fff;
+  background: var(--palette-red-500);
+  color: var(--palette-sand-50);
   font-size: 1rem;
   font-weight: 600;
   display: inline-flex;
@@ -48,6 +50,11 @@ function handleClick() {
   overflow: hidden;
   transition: transform var(--motion-pattern-scale);
 }
+
+.buy-btn:hover {
+  background: var(--palette-red-600);
+}
+
 .buy-btn:active {
   transform: scale(var(--motion-scale-press));
 }
@@ -60,8 +67,23 @@ function handleClick() {
 }
 
 /* ---------- Spinner ---------- */
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .buy-btn.loading .spinner {
   display: block;
+}
+
+/* ---------- Checkmark ---------- */
+.checkmark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ---------- Checkmark animation trigger ---------- */
@@ -75,28 +97,5 @@ function handleClick() {
   opacity: 1;
   stroke-dashoffset: 0;
   transition-delay: var(--motion-delay-m);
-}
-
-.buy-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--palette-sand-50);
-  background-color: var(--palette-red-500);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform var(--motion-pattern-scale);
-}
-
-.buy-button:hover {
-  background-color: var(--palette-sand-900);
-}
-
-.buy-button:active {
-  transform: scale(var(--motion-scale-press));
 }
 </style>

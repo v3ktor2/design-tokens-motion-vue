@@ -1,27 +1,46 @@
 <script setup>
 import CartIcon from "./icons/CartIcon.vue";
+import StyledBadge from "./StyledBadge.vue";
 </script>
 
 <template>
-  <div class="icon-cart">
+  <button class="icon-cart">
     <CartIcon />
-  </div>
+    <StyledBadge class="badge" />
+  </button>
 </template>
 
 <style scoped>
+@import "../styles/motion.css";
+
 .icon-cart {
+  position: relative;
   width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
+  border: none;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: 
+    transform var(--motion-pattern-scale),
+    background-color 0.2s ease;
 }
 
 .icon-cart:hover {
-  background-color: #e5e5e5;
-  cursor: pointer;
+  background: var(--palette-sand-100);
+}
+
+.icon-cart:active {
+  transform: scale(var(--motion-scale-press));
+}
+
+.badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 </style>
