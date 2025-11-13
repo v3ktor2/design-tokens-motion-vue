@@ -15,19 +15,13 @@ const isAnimating = ref(false);
 watch(() => props.count, (newVal, oldVal) => {
   if (newVal !== oldVal) {
     previousCount.value = oldVal;
-    isAnimating.value = false;
+    currentCount.value = newVal;
+    isAnimating.value = true;
     
-    // Force a reflow to reset animation state
-    setTimeout(() => {
-      isAnimating.value = true;
-      currentCount.value = newVal;
-    }, 10);
-    
-    // Reset animation state
+    // Reset animation state after animation completes
     setTimeout(() => {
       isAnimating.value = false;
-      previousCount.value = newVal;
-    }, 320);
+    }, 350);
   }
 });
 </script>
@@ -35,7 +29,7 @@ watch(() => props.count, (newVal, oldVal) => {
 <template>
   <div class="styled-badge">
     <div class="badge-counter">
-      <span v-if="isAnimating" class="badge-text previous">
+      <span class="badge-text previous" :class="{ animating: isAnimating }">
         {{ previousCount }}
       </span>
       <span class="badge-text current" :class="{ animating: isAnimating }">
@@ -46,6 +40,8 @@ watch(() => props.count, (newVal, oldVal) => {
 </template>
 
 <style scoped>
+@import "../styles/motion.css";
+
 .styled-badge {
   width: 18px;
   height: 18px;
@@ -74,20 +70,26 @@ watch(() => props.count, (newVal, oldVal) => {
   color: white;
   line-height: 1;
   position: absolute;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .badge-text.current {
   transform: translateY(0);
   opacity: 1;
+  animation: none;
 }
 
 .badge-text.current.animating {
-  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideUp var(--motion-pattern-enter);
 }
 
 .badge-text.previous {
-  animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-18px);
+  pointer-events: none;
+}
+
+.badge-text.previous.animating {
+  animation: slideOut var(--motion-pattern-exit);
 }
 
 @keyframes slideUp {
