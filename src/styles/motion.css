@@ -80,6 +80,11 @@
   --motion-scale-press-soft: 0.98; /* Subtle press for large elements */
   --motion-scale-press-heavy: 0.92; /* Strong press for micro-interactions */
   
+  /* More pronounced scale for touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    --motion-scale-press: 0.90;
+  }
+  
   /* 📐 Utility scales — for enter/exit animations */
   --motion-scale-hidden: 0.5;     /* Hidden/collapsed state */
   --motion-scale-visible: 1;      /* Normal/visible state */

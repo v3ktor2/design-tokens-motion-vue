@@ -9,6 +9,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const isActive = ref(props.modelValue);
+const isPressed = ref(false);
 
 // Watch for prop updates from a radio group parent
 watch(
@@ -23,10 +24,25 @@ watch(
 function toggle() {
   emit("update:modelValue", !props.modelValue);
 }
+
+function handleTouchStart() {
+  isPressed.value = true;
+}
+
+function handleTouchEnd() {
+  isPressed.value = false;
+}
 </script>
 
 <template>
-  <button class="radio-btn" @click="toggle">
+  <button 
+    class="radio-btn" 
+    :class="{ pressed: isPressed }"
+    @click="toggle"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+    @touchcancel="handleTouchEnd"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -78,7 +94,10 @@ function toggle() {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.radio-btn:active { transform: scale(var(--motion-scale-press)); }
+.radio-btn:active,
+.radio-btn.pressed { 
+  transform: scale(var(--motion-scale-press)); 
+}
 
 .label {
   font-size: 14px;

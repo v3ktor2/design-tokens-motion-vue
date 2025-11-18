@@ -4,15 +4,31 @@ import CartIcon from "./icons/CartIcon.vue";
 import StyledBadge from "./StyledBadge.vue";
 
 const cartCount = ref(1);
+const isPressed = ref(false);
 
 // Example: increment count on click to demonstrate animation
 function handleClick() {
   cartCount.value++;
 }
+
+function handleTouchStart() {
+  isPressed.value = true;
+}
+
+function handleTouchEnd() {
+  isPressed.value = false;
+}
 </script>
 
 <template>
-  <button class="icon-cart" @click="handleClick">
+  <button 
+    class="icon-cart" 
+    :class="{ pressed: isPressed }"
+    @click="handleClick"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+    @touchcancel="handleTouchEnd"
+  >
     <CartIcon />
     <StyledBadge :count="cartCount" class="badge" />
   </button>
@@ -44,7 +60,8 @@ function handleClick() {
   background: var(--palette-sand-100);
 }
 
-.icon-cart:active {
+.icon-cart:active,
+.icon-cart.pressed {
   transform: scale(var(--motion-scale-press));
 }
 

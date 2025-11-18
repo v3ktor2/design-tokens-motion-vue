@@ -5,6 +5,7 @@ import CheckmarkIcon from "./icons/CheckmarkIcon.vue";
 import CartIcon from "./icons/CartIcon.vue";
 
 const state = ref("idle"); // idle → loading → success
+const isPressed = ref(false);
 
 function handleClick() {
   if (state.value !== "idle") return;
@@ -18,10 +19,25 @@ function handleClick() {
     setTimeout(() => (state.value = "idle"), 2000);
   }, 2000);
 }
+
+function handleTouchStart() {
+  isPressed.value = true;
+}
+
+function handleTouchEnd() {
+  isPressed.value = false;
+}
 </script>
 
 <template>
-  <button class="buy-btn" :class="state" @click="handleClick">
+  <button 
+    class="buy-btn" 
+    :class="[state, { pressed: isPressed }]" 
+    @click="handleClick"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+    @touchcancel="handleTouchEnd"
+  >
     <span class="label">Add to Cart</span>
     <SpinnerIcon v-if="state === 'loading'" class="spinner" />
     <CheckmarkIcon v-if="state === 'success'" class="checkmark" />
@@ -57,7 +73,8 @@ function handleClick() {
   background: var(--palette-red-600);
 }
 
-.buy-btn:active {
+.buy-btn:active,
+.buy-btn.pressed {
   transform: scale(var(--motion-scale-press));
 }
 
