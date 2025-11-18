@@ -75,6 +75,8 @@ function toggle() {
   cursor: pointer;
   padding: 0.25rem;
   transition: transform var(--motion-pattern-scale);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .radio-btn:active { transform: scale(var(--motion-scale-press)); }
 

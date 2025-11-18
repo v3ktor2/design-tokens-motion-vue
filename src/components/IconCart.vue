@@ -36,6 +36,8 @@ function handleClick() {
   transition: 
     transform var(--motion-pattern-scale),
     background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .icon-cart:hover {

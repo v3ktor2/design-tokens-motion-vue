@@ -49,6 +49,8 @@ function handleClick() {
   cursor: pointer;
   overflow: hidden;
   transition: transform var(--motion-pattern-scale);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .buy-btn:hover {
