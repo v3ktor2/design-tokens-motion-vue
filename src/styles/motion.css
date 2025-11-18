@@ -82,7 +82,7 @@
   
   /* More pronounced scale for touch devices */
   @media (hover: none) and (pointer: coarse) {
-    --motion-scale-press: 0.90;
+    --motion-scale-press: 0.95;
   }
   
   /* 📐 Utility scales — for enter/exit animations */
