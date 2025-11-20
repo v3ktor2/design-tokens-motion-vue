@@ -80,6 +80,9 @@
   --motion-scale-press-soft: 0.98; /* Subtle press for large elements */
   --motion-scale-press-heavy: 0.92; /* Strong press for micro-interactions */
   
+  /* 🔼 Scale up values — for emphasis/attention */
+  --motion-scale-bounce: 1.25;    /* Bounce effect for notifications/badges */
+  
   /* More pronounced scale for touch devices */
   @media (hover: none) and (pointer: coarse) {
     --motion-scale-press: 0.95;

@@ -11,23 +11,30 @@ const props = defineProps({
 const currentCount = ref(props.count);
 const previousCount = ref(props.count);
 const isAnimating = ref(false);
+const isBouncing = ref(false);
 
 watch(() => props.count, (newVal, oldVal) => {
   if (newVal !== oldVal) {
     previousCount.value = oldVal;
     currentCount.value = newVal;
     isAnimating.value = true;
+    isBouncing.value = true;
     
     // Reset animation state after animation completes
     setTimeout(() => {
       isAnimating.value = false;
     }, 350);
+    
+    // Reset bounce after it completes
+    setTimeout(() => {
+      isBouncing.value = false;
+    }, 400);
   }
 });
 </script>
 
 <template>
-  <div class="styled-badge">
+  <div class="styled-badge" :class="{ bouncing: isBouncing }">
     <div class="badge-counter">
       <span class="badge-text previous" :class="{ animating: isAnimating }">
         {{ previousCount }}
@@ -52,6 +59,11 @@ watch(() => props.count, (newVal, oldVal) => {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: transform var(--motion-pattern-scale);
+}
+
+.styled-badge.bouncing {
+  animation: bounce 400ms var(--motion-ease-snap);
 }
 
 .badge-counter {
@@ -111,6 +123,18 @@ watch(() => props.count, (newVal, oldVal) => {
   to {
     transform: translateY(-18px);
     opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(var(--motion-scale-bounce));
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
