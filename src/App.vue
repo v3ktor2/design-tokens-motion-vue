@@ -3,6 +3,7 @@ import { ref } from "vue";
 import BuyButton from "./components/BuyButton.vue";
 import RadioButton from "./components/RadioButton.vue";
 import IconCart from "./components/IconCart.vue";
+import Favourites from "./components/Favourites.vue";
 
 const selected = ref("a");
 </script>
@@ -14,6 +15,11 @@ const selected = ref("a");
     <section class="component-section">
       <h2>Icon Cart</h2>
       <IconCart />
+    </section>
+
+    <section class="component-section">
+      <h2>Favourites</h2>
+      <Favourites />
     </section>
 
     <section class="component-section">
