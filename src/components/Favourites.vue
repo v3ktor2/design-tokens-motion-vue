@@ -114,13 +114,13 @@ function handleTouchEnd() {
     transform: scale(0);
   }
   35% {
-    transform: scale(1.25);
+    transform: scale(1.22);
   }
   50% {
     transform: scale(0.9);
   }
   65% {
-    transform: scale(1.2);
+    transform: scale(1.18);
   }
   80% {
     transform: scale(0.9);
