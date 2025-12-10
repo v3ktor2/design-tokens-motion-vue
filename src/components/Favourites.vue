@@ -13,7 +13,7 @@ function toggleFavourite() {
     
     setTimeout(() => {
       isAnimating.value = false;
-    }, 500);
+    }, 450);
   } else {
     // Turning OFF - instant toggle
     isFavourite.value = false;
@@ -82,6 +82,13 @@ function handleTouchEnd() {
   background: rgba(0, 0, 0, 0.08);
 }
 
+/* Remove hover effect on touch devices */
+@media (hover: none) {
+  .favourites-btn:hover {
+    background: transparent;
+  }
+}
+
 .favourites-btn:active,
 .favourites-btn.pressed {
   transform: scale(var(--motion-scale-press));
@@ -99,7 +106,7 @@ function handleTouchEnd() {
 /* Scale up animation when becoming favourite */
 .favourites-btn.animating .heart-fill,
 .favourites-btn.animating .heart-stroke {
-  animation: scaleUp 500ms var(--motion-ease-snap);
+  animation: scaleUp 450ms var(--motion-ease-snap);
 }
 
 @keyframes scaleUp {
